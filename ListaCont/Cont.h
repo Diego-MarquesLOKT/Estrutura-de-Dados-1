@@ -12,7 +12,7 @@
     void removeFinal();
     void insereK(int k, int val);
     void removeK(int k);
-    int busca(int chave) const;
+    int busca(int chave);
     int tam() const {return n;}
     private:
     int n;

@@ -38,10 +38,9 @@ if(k < 0 || k >= n)
  {
     if(n == max)
     {
-        cout << "Vetor cheio! Erro -2" << endl;
-        return -2;
+       realoca();
     }
-    vet[n] = val;
+    vet[n] = k;
     n++;
  }
 
@@ -99,5 +98,17 @@ int Cont::busca(int val)
             return i;
         }
     }
-    else return -1;
+     return -1;
+}
+
+void Cont::realoca()
+{
+    int *novo_vet = new int[2*max];
+
+    for(int i = 0;i < n;i++)
+    {
+       novo_vet[i] = vet[i];
+    }
+    vet = novo_vet;
+    max *=2;
 }
