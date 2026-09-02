@@ -29,10 +29,34 @@ void ListaSEncad::insere_final(int val)
     p->setProx(novo);
 }
 
-void ListaSEncad::insere_posicao(int k,int val
+void ListaSEncad::insere_posicao(int k, int val)
 {
-    
-})
+    if(k < 0)
+    {
+        cout <<"Posicao  invalida" << endl;
+        return;
+    }
+    if(k == 0)
+    {
+        insere_inicio(val);
+    return;
+    }
+    No *p = inicio;
+    int i = 0;
+    while (p != nullptr && i < k - 1)
+    {
+        p = p->getProx();
+        i++;
+    }
+    if (p == nullptr)
+    {
+        cout << "Posicao invalida" << endl;
+        return;
+    }
+    No *novo = new No(val);
+    novo->setProx(p->getProx()); 
+    p->setProx(novo);           
+}
 
 int ListaSEncad::totalNos()
 {
