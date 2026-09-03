@@ -41,6 +41,57 @@ void ListaSEncad::remove_inicio()
     delete alvo;
 }
 
+void ListaSEncad::remove_final()
+{
+    if (inicio == nullptr)
+        return;
+    if (inicio->getProx() == nullptr)
+    {
+        delete inicio;
+        inicio = nullptr;
+        return;
+    }
+    No *p = inicio;
+    while (p->getProx()->getProx() != nullptr)
+        p = p->getProx();
+    delete p->getProx();
+    p->setProx(nullptr);
+}
+
+void ListaSEncad::remove_posicao(int k)
+{
+    if(k < 0)
+    {
+        cout << "Valor invalido" << endl;
+        return;
+    }if(k==0)
+    {
+        remove_inicio();
+        return;
+    }
+    if(inicio == nullptr || inicio->getProx() == nullptr)
+    {
+        cout << "Lista no final/vazia" << endl;
+        return;
+    }
+    No *p = inicio;
+    No* alvo =p->getProx();
+    int i = 0;
+    while(p->getProx() != nullptr && i < k - 1)
+    {
+        p = p->getProx();
+        i++;
+    }
+    if(p== nullptr)
+    {
+        cout << "Endereço invalido" << endl;
+        return;
+    }
+    alvo = p->getProx();
+    p->setProx(alvo->getProx());
+    delete alvo;
+}
+
 void ListaSEncad::insere_posicao(int k, int val)
 {
     if (k < 0)
