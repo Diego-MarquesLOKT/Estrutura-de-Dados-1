@@ -29,17 +29,29 @@ void ListaSEncad::insere_final(int val)
     p->setProx(novo);
 }
 
-void ListaSEncad::insere_posicao(int k, int val)
+void ListaSEncad::remove_inicio()
 {
-    if(k < 0)
+    if (inicio == nullptr)
     {
-        cout <<"Posicao  invalida" << endl;
+        cout << "Erro: lista vazia.\n";
         return;
     }
-    if(k == 0)
+    No *alvo = inicio;
+    inicio = inicio->getProx();
+    delete alvo;
+}
+
+void ListaSEncad::insere_posicao(int k, int val)
+{
+    if (k < 0)
+    {
+        cout << "Posicao  invalida" << endl;
+        return;
+    }
+    if (k == 0)
     {
         insere_inicio(val);
-    return;
+        return;
     }
     No *p = inicio;
     int i = 0;
@@ -54,8 +66,8 @@ void ListaSEncad::insere_posicao(int k, int val)
         return;
     }
     No *novo = new No(val);
-    novo->setProx(p->getProx()); 
-    p->setProx(novo);           
+    novo->setProx(p->getProx());
+    p->setProx(novo);
 }
 
 int ListaSEncad::totalNos()
