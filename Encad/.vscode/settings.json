@@ -1,0 +1,9 @@
+{
+    "code-runner.executorMap": {
+        "cpp": "cd \"$dir\" && g++ -std=c++17 -Wall -Wextra -pedantic *.cpp -o main && ./main"
+    },
+    "code-runner.runInTerminal": true,
+    "code-runner.fileDirectoryAsCwd": true,
+    "code-runner.saveAllFilesBeforeRun": true,
+    "code-runner.ignoreSelection": true
+}

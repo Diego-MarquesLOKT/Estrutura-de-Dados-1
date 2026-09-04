@@ -6,7 +6,15 @@ ListaSEncad::ListaSEncad()
     inicio = nullptr;
 }
 // Temporário: a lista ainda está sempre vazia neste checkpoint.
-ListaSEncad::~ListaSEncad() {}
+ListaSEncad::~ListaSEncad() {
+No* p = inicio;
+while (p != nullptr) {
+No* proximo = p->getProx();
+delete p;
+p = proximo;
+}
+inicio = nullptr;
+}
 
 void ListaSEncad::insere_inicio(int val)
 {
@@ -82,7 +90,7 @@ void ListaSEncad::remove_posicao(int k)
         p = p->getProx();
         i++;
     }
-    if(p== nullptr)
+    if(p->getProx()== nullptr)
     {
         cout << "Endereço invalido" << endl;
         return;
