@@ -21,5 +21,7 @@ public:
 
 private:
     No *inicio;
+    No *ultimo;
+    int n;
 };
 #endif

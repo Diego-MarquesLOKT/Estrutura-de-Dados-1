@@ -4,16 +4,20 @@ using namespace std;
 ListaSEncad::ListaSEncad()
 {
     inicio = nullptr;
+    ultimo = nullptr;
+    n = 0;
 }
 // Temporário: a lista ainda está sempre vazia neste checkpoint.
-ListaSEncad::~ListaSEncad() {
-No* p = inicio;
-while (p != nullptr) {
-No* proximo = p->getProx();
-delete p;
-p = proximo;
-}
-inicio = nullptr;
+ListaSEncad::~ListaSEncad()
+{
+    No *p = inicio;
+    while (p != nullptr)
+    {
+        No *proximo = p->getProx();
+        delete p;
+        p = proximo;
+    }
+    inicio = nullptr;
 }
 
 void ListaSEncad::insere_inicio(int val)
@@ -21,6 +25,11 @@ void ListaSEncad::insere_inicio(int val)
     No *novo = new No(val);
     novo->setProx(inicio);
     inicio = novo;
+    n++;
+    n++;
+
+    if (n == 1)
+        ultimo = novo;
 }
 
 void ListaSEncad::insere_final(int val)
@@ -68,29 +77,30 @@ void ListaSEncad::remove_final()
 
 void ListaSEncad::remove_posicao(int k)
 {
-    if(k < 0)
+    if (k < 0)
     {
         cout << "Valor invalido" << endl;
         return;
-    }if(k==0)
+    }
+    if (k == 0)
     {
         remove_inicio();
         return;
     }
-    if(inicio == nullptr || inicio->getProx() == nullptr)
+    if (inicio == nullptr || inicio->getProx() == nullptr)
     {
         cout << "Lista no final/vazia" << endl;
         return;
     }
     No *p = inicio;
-    No* alvo =p->getProx();
+    No *alvo = p->getProx();
     int i = 0;
-    while(p->getProx() != nullptr && i < k - 1)
+    while (p->getProx() != nullptr && i < k - 1)
     {
         p = p->getProx();
         i++;
     }
-    if(p->getProx()== nullptr)
+    if (p->getProx() == nullptr)
     {
         cout << "Endereço invalido" << endl;
         return;
