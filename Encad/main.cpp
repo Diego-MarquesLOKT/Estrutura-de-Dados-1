@@ -4,20 +4,11 @@ using namespace std;
 int main()
 {
     ListaSEncad lista;
-    lista.insere_final(10);
-    lista.insere_final(20);
-    lista.insere_final(30);
-    lista.insere_final(40);
+    lista.insere_ordenado(20);
+    lista.insere_ordenado(10);
+    lista.insere_ordenado(40);
+    lista.insere_ordenado(30);
+    lista.insere_ordenado(20);
     lista.imprime();
-    lista.remove_inicio();
-    lista.imprime();
-    lista.remove_final();
-    lista.imprime();
-    lista.remove_posicao(1);
-    lista.imprime();
-    lista.remove_posicao(8);
-    lista.imprime();
-    lista.remove_final();
-    lista.imprime();
-    lista.remove_inicio();
+    cout << "Total: " << lista.totalNos() << '\n';
 }
