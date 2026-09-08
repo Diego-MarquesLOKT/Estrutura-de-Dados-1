@@ -146,7 +146,11 @@ void ListaDupla::insere_posicao(int pos,int valor)
         return;
     }
     NoDuplo* novo = new NoDuplo(valor);
-    novo->setProx(p->getProx());
-    p->setProx(novo);
+    
+
+    p->getAnt()->setProx(novo);
+    novo->setAnt(p->getAnt());
+    novo->setProx(p);
+    p->setAnt(novo);
     n++;
 }
