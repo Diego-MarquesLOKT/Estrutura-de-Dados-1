@@ -16,9 +16,10 @@ public:
     void imprime();
     void imprime_reverso();
 
-private
-    :
-    14 NoDuplo *inicio;
+private:
+     NoDuplo *inicio;
     NoDuplo *fim;
     int n;
 };
+
+#endif;
