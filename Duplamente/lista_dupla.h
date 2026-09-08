@@ -15,6 +15,7 @@ public:
     void remove_final();
     void imprime();
     void imprime_reverso();
+    void insere_posicao(int pos,int valor);
 
 private:
      NoDuplo *inicio;
