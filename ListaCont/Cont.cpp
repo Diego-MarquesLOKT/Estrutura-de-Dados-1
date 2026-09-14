@@ -34,6 +34,42 @@ if(k < 0 || k >= n)
     vet[k] = val;
  }
 
+bool Cont::troca(int posicao1 , int posicao2 )
+{
+    if(n == 0)
+    {
+        cout << "Lista vazia!" << endl;
+        return false;
+    }else if(posicao1 >= n || posicao2 >= n || posicao1 < n || posicao2 < n)
+    {
+        cout << "Fora da lista!" << endl;
+        return false;
+    }
+    int tmp = vet[posicao1];
+    vet[posicao1] = vet[posicao2];
+    vet[posicao2] = tmp;
+
+    return true;
+}
+
+bool Cont::aumentaCapacidade (int novoMax ) 
+{
+    if(novoMax <= max)
+    {
+        cout << "Capacidade inferior ou igual a capacidade anterior" << endl;
+        return false;
+    }
+    int *novo_vet = new int[novoMax];
+   for(int i = 0; i < n;i++)
+   {
+    novo_vet[i] = vet[i];
+   }
+   delete [] vet;
+   max= novoMax;
+   vet = novo_vet;
+   return true;
+}
+
  int Cont::insereFinal(int k)
  {
     if(n == max)

@@ -7,7 +7,9 @@
     Cont(int tam);
     ~Cont();
     int get(int k);
+    bool troca(int pos1,int pos2);
     void set(int k,int val);
+    bool aumentaCapacidade(int novoMax); 
     int insereFinal(int k);
     void removeFinal();
     void insereK(int k, int val);
