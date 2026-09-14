@@ -142,6 +142,16 @@ void ListaSEncad::insere_posicao(int k, int val)
     p->setProx(novo);
 }
 
+int ListaSEncad::contaMaiores(int val)
+{
+    
+}
+
+int ListaSEncad::getComprimento()
+{
+    return n;
+}
+
 void ListaSEncad::insere_ordenado(int val)
 {
     if(inicio == nullptr || val <= inicio->getInfo())

@@ -18,6 +18,8 @@ public:
     void imprime();
     void insere_ordenado(int val);
     int soma();
+    int getComprimento();
+    int contaMaiores(int val);
 
 private:
     No *inicio;
