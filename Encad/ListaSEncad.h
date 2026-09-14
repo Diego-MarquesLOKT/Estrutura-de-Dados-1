@@ -20,6 +20,8 @@ public:
     int soma();
     int getComprimento();
     int contaMaiores(int val);
+    
+
 
 private:
     No *inicio;

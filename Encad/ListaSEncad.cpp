@@ -144,7 +144,21 @@ void ListaSEncad::insere_posicao(int k, int val)
 
 int ListaSEncad::contaMaiores(int val)
 {
-    
+ if(n == 0)
+ {
+    return 0;
+ }
+ int cont = 0;
+ No* p = inicio;
+ while( p != nullptr)
+ {
+    if(val > p->getInfo())
+    {
+        cont++;
+    }
+    p = p->getProx();
+ }
+ return cont;
 }
 
 int ListaSEncad::getComprimento()
@@ -207,6 +221,8 @@ No *ListaSEncad::busca(int val)
     }
     return nullptr;
 }
+
+
 
 int ListaSEncad::soma()
 {
