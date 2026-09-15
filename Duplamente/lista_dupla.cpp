@@ -191,4 +191,7 @@ void ListaDupla::insere(int val)
     NoDuplo *p_prev = p->getAnt();
     p_prev->setProx(novo_no);
     novo_no->setAnt(p_prev);
+    novo_no->setProx(p);
+    p->setAnt(novo_no);
+    n++;
 }
