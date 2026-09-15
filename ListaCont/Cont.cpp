@@ -148,3 +148,13 @@ void Cont::realoca()
     vet = novo_vet;
     max *=2;
 }
+
+void Cont::inverte()
+{
+    for(int = 0; i <n/2;i++)
+    {
+        int tmp = vet[i];
+        vet[i] = vet[n-1-i];
+        vet[n-1-i] = tmp;
+    }
+}

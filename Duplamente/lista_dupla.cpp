@@ -213,3 +213,4 @@ void ListaDupla::insere_ordenado(int val)
     }
     insere(p->getProx()->getInfo());
 }
+

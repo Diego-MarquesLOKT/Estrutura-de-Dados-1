@@ -16,6 +16,7 @@
     void removeK(int k);
     int busca(int chave);
     int tam() const {return n;}
+    void inverte();
     private:
     int n;
     void realoca();
