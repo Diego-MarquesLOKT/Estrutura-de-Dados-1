@@ -158,59 +158,57 @@ void ListaDupla::insere_posicao(int pos,int valor)
 void ListaDupla::insere(int val)
 {
     NoDuplo* novo_no = new NoDuplo(val);
-    if(n==0)
-    {
-        inicio=novo_no;
-        fim = novo_no;
-        n++;
-        return;
-    }
 
-    //Achar local de insercao;
-    NoDuplo* p = inicio;
-    while(p!= nullptr && val > p->getInfo())
-    {
-        p= p->getProx();
-    }
-    if(p==inicio)
-    {
-        //valor deve ser inserido no inicio
-        novo_no->setProx(inicio);
-        inicio->setAnt(novo_no);
-        inicio = p;
-    }
-
-    if(p==nullptr)
-    {
-        fim->setProx(novo_no);
-        novo_no->setAnt(fim);
-        fim = novo_no;
-        n++;
-        return;
-    }
-    NoDuplo *p_prev = p->getAnt();
-    p_prev->setProx(novo_no);
-    novo_no->setAnt(p_prev);
-    novo_no->setProx(p);
-    p->setAnt(novo_no);
-    n++;
-}
-
-
-void ListaDupla::insere_ordenado(int val)
-{
-    NoDuplo* novo_no = new NoDuplo(val);
-    if(n==0)
+    // Lista vazia
+    if (n == 0)
     {
         inicio = novo_no;
         fim = novo_no;
         n++;
+        return;
     }
-    NoDuplo * p = inicio;
-    while(p!=nullptr && p->getProx()->getInfo() < val)
+
+    // Procura a primeira posição cujo valor >= val
+    NoDuplo* p = inicio;
+
+    while (p != nullptr && val > p->getInfo())
     {
         p = p->getProx();
     }
-    insere(p->getProx()->getInfo());
+
+    // Inserção no início
+    if (p == inicio)
+    {
+        novo_no->setProx(inicio);
+        inicio->setAnt(novo_no);
+
+        inicio = novo_no;
+
+        n++;
+        return;
+    }
+
+    // Inserção no final
+    if (p == nullptr)
+    {
+        fim->setProx(novo_no);
+        novo_no->setAnt(fim);
+
+        fim = novo_no;
+
+        n++;
+        return;
+    }
+
+    // Inserção no meio
+    NoDuplo* p_prev = p->getAnt();
+
+    p_prev->setProx(novo_no);
+    novo_no->setAnt(p_prev);
+
+    novo_no->setProx(p);
+    p->setAnt(novo_no);
+
+    n++;
 }
 
