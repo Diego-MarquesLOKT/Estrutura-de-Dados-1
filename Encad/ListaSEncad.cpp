@@ -235,3 +235,8 @@ int ListaSEncad::soma()
     }
     return soma;
 }
+
+bool ListaSEncad::igual( ListaSEncad *l2 )
+{
+
+}

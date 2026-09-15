@@ -20,7 +20,7 @@ public:
     int soma();
     int getComprimento();
     int contaMaiores(int val);
-    
+    bool igual(ListaSEncad *l);
 
 
 private:
