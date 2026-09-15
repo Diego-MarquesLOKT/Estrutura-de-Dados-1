@@ -17,7 +17,8 @@ public:
     void imprime_reverso();
     void insere_posicao(int pos,int valor);
     void insere(int val);
-
+    void inverte();
+    void insere_ordenado(int val);
 private:
      NoDuplo *inicio;
     NoDuplo *fim;

@@ -195,3 +195,21 @@ void ListaDupla::insere(int val)
     p->setAnt(novo_no);
     n++;
 }
+
+
+void ListaDupla::insere_ordenado(int val)
+{
+    NoDuplo* novo_no = new NoDuplo(val);
+    if(n==0)
+    {
+        inicio = novo_no;
+        fim = novo_no;
+        n++;
+    }
+    NoDuplo * p = inicio;
+    while(p!=nullptr && p->getProx()->getInfo() < val)
+    {
+        p = p->getProx();
+    }
+    insere(p->getProx()->getInfo());
+}
