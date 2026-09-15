@@ -70,6 +70,8 @@ bool Cont::aumentaCapacidade (int novoMax )
    return true;
 }
 
+
+
  int Cont::insereFinal(int k)
  {
     if(n == max)

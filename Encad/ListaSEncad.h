@@ -21,7 +21,7 @@ public:
     int getComprimento();
     int contaMaiores(int val);
     bool igual(ListaSEncad *l);
-
+    void remove_todos(int valor);
 
 private:
     No *inicio;

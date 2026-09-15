@@ -186,6 +186,16 @@ void ListaSEncad::insere_ordenado(int val)
     n++;
 }
 
+void ListaSEncad::remove_todos(int valor)
+{
+    while(inicio != nullptr && inicio->getInfo() == valor)
+    {
+        No* alvo = inicio;
+    inicio = inicio->getProx();
+    delete alvo;
+    }
+}
+
 int ListaSEncad::totalNos()
 {
     /*int cont = 0;
