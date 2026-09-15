@@ -1,7 +1,8 @@
 #include "no_d.h"
+#include "lista_circ.h"
 using namespace std;
 
-NoDuplo::NoDuplo(int val) : ant(nullptr), info(val), prox(nullptr) {}
+NoDuplo::NoDuplo(int val) : ant(inicio), info(val), prox(fim) {}
  NoDuplo::~NoDuplo() {}
  void NoDuplo::setAnt(NoDuplo *p) { ant = p; }
  void NoDuplo::setProx(NoDuplo *p) { prox = p; }
