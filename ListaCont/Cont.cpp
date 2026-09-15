@@ -151,10 +151,41 @@ void Cont::realoca()
 
 void Cont::inverte()
 {
-    for(int = 0; i <n/2;i++)
+    for(int i = 0; i <n/2;i++)
     {
         int tmp = vet[i];
         vet[i] = vet[n-1-i];
         vet[n-1-i] = tmp;
     }
+}
+
+void Cont::imprime()
+{
+    for(int i = 0; i < n;i++)
+    {
+        cout << " " << vet[i];
+    }
+    cout << endl;
+}
+
+int Cont::tamanho()
+{
+    return n;
+}
+
+void Cont::limpa()
+{
+    n = 0;
+}
+
+int Cont::buscaMaior(int val)
+{
+    for(int i = 0; i < n;i++)
+    {
+        if(val < vet[i])
+        {
+            return i;
+        }
+    }
+    return -1;
 }
