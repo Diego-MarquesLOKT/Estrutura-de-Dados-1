@@ -23,7 +23,8 @@ public:
    void limpa();
    int buscaMaior(int val);
    void insereValores(int t, int v[]);
-
+   void rotacionaEsquerda(int p);
+   void concatena(const Cont &outra);
 
 private:
    int n;
