@@ -168,21 +168,21 @@ int ListaSEncad::getComprimento()
 
 void ListaSEncad::insere_ordenado(int val)
 {
+    No* novo = new No(val);
     if(inicio == nullptr || val <= inicio->getInfo())
     {
-        insere_inicio(val);
+        novo->setProx(inicio);
+        inicio = novo;
+        n++;
         return;
     }
-
-    No *p = inicio;
-    while(p->getProx() != nullptr && p->getProx()->getInfo() < val)
+    No *ant = inicio;
+    while(ant->getProx() != nullptr  && ant->getProx()->getInfo() < val)
     {
-        p = p->getProx();
+        ant = ant->getProx();
     }
-
-    No* novo = new No(val);
-    novo->setProx(p->getProx());
-    p->setProx(novo);
+    novo->setProx(ant->getProx());
+    ant->setProx(novo);
     n++;
 }
 
