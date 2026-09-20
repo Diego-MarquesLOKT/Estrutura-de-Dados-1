@@ -34,12 +34,13 @@ void ListaSEncad::insere_inicio(int val)
 void ListaSEncad::insere_final(int val)
 {
     No *novo = new No(val);
-    if(n == 0)
+    if (n == 0)
     {
         ultimo = novo;
         inicio = novo;
-    }else 
-    ultimo->setProx(novo);
+    }
+    else
+        ultimo->setProx(novo);
     ultimo = novo;
     n++;
 }
@@ -55,7 +56,7 @@ void ListaSEncad::remove_inicio()
     inicio = inicio->getProx();
     delete alvo;
     n--;
-    if(n==0)
+    if (n == 0)
     {
         ultimo = nullptr;
     }
@@ -144,21 +145,21 @@ void ListaSEncad::insere_posicao(int k, int val)
 
 int ListaSEncad::contaMaiores(int val)
 {
- if(n == 0)
- {
-    return 0;
- }
- int cont = 0;
- No* p = inicio;
- while( p != nullptr)
- {
-    if(val > p->getInfo())
+    if (n == 0)
     {
-        cont++;
+        return 0;
     }
-    p = p->getProx();
- }
- return cont;
+    int cont = 0;
+    No *p = inicio;
+    while (p != nullptr)
+    {
+        if (val > p->getInfo())
+        {
+            cont++;
+        }
+        p = p->getProx();
+    }
+    return cont;
 }
 
 int ListaSEncad::getComprimento()
@@ -168,8 +169,8 @@ int ListaSEncad::getComprimento()
 
 void ListaSEncad::insere_ordenado(int val)
 {
-    No* novo = new No(val);
-    if(inicio == nullptr || val <= inicio->getInfo())
+    No *novo = new No(val);
+    if (inicio == nullptr || val <= inicio->getInfo())
     {
         novo->setProx(inicio);
         inicio = novo;
@@ -177,7 +178,7 @@ void ListaSEncad::insere_ordenado(int val)
         return;
     }
     No *ant = inicio;
-    while(ant->getProx() != nullptr  && ant->getProx()->getInfo() < val)
+    while (ant->getProx() != nullptr && ant->getProx()->getInfo() < val)
     {
         ant = ant->getProx();
     }
@@ -188,11 +189,38 @@ void ListaSEncad::insere_ordenado(int val)
 
 void ListaSEncad::remove_todos(int valor)
 {
-    while(inicio != nullptr && inicio->getInfo() == valor)
+    if (inicio == nullptr)
+        return;
+
+    while (inicio != nullptr && inicio->getInfo() == valor)
     {
-        No* alvo = inicio;
-    inicio = inicio->getProx();
-    delete alvo;
+        No *alvo = inicio;
+        inicio = inicio->getProx();
+        delete alvo;
+        n--;
+        if (inicio == nullptr)
+        {
+            ultimo = nullptr;
+            return;
+        }
+    }
+
+    No *a = inicio;
+    while (a->getProx() != nullptr)
+    {
+        if (a->getProx()->getInfo() == valor)
+        {
+            No *alvo = a->getProx();
+            a->setProx(alvo->getProx());
+            if (alvo == ultimo)
+            {
+                ultimo = a;
+            }
+            delete alvo;
+            n--;
+            continue;
+        }
+        a = a->getProx();
     }
 }
 
@@ -232,8 +260,6 @@ No *ListaSEncad::busca(int val)
     return nullptr;
 }
 
-
-
 int ListaSEncad::soma()
 {
     No *p = inicio;
@@ -246,7 +272,6 @@ int ListaSEncad::soma()
     return soma;
 }
 
-bool ListaSEncad::igual( ListaSEncad *l2 )
+bool ListaSEncad::igual(ListaSEncad *l2)
 {
-
 }
