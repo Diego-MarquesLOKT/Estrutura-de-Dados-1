@@ -19,6 +19,8 @@ public:
     void insere(int val);
     void inverte();
     void insere_ordenado(int val);
+    int removeTodos(int val);
+    void inverte();
 private:
      NoDuplo *inicio;
     NoDuplo *fim;

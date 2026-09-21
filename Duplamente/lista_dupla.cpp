@@ -116,9 +116,9 @@ void ListaDupla::imprime_reverso()
     cout << " ]";
 }
 
-void ListaDupla::insere_posicao(int pos,int valor)
+void ListaDupla::insere_posicao(int pos, int valor)
 {
-    if(n == 0)
+    if (n == 0)
     {
         cout << "Lista vazia" << endl;
         return;
@@ -133,20 +133,19 @@ void ListaDupla::insere_posicao(int pos,int valor)
         insere_inicio(valor);
         return;
     }
-    NoDuplo* p = inicio;
+    NoDuplo *p = inicio;
     int i = 0;
-    while(p !=nullptr && i < pos - 1 )
+    while (p != nullptr && i < pos - 1)
     {
         p = p->getProx();
         i++;
     }
-     if (p == nullptr)
+    if (p == nullptr)
     {
         cout << "Posicao invalida" << endl;
         return;
     }
-    NoDuplo* novo = new NoDuplo(valor);
-    
+    NoDuplo *novo = new NoDuplo(valor);
 
     p->getAnt()->setProx(novo);
     novo->setAnt(p->getAnt());
@@ -157,14 +156,14 @@ void ListaDupla::insere_posicao(int pos,int valor)
 
 void ListaDupla::insere_ordenado(int val)
 {
-    NoDuplo * novo = new NoDuplo(val);
-    if(inicio == nullptr)
+    NoDuplo *novo = new NoDuplo(val);
+    if (inicio == nullptr)
     {
         inicio = fim = novo;
         return;
     }
 
-    if(val <= inicio->getInfo())
+    if (val <= inicio->getInfo())
     {
         novo->setProx(inicio);
         inicio->setAnt(novo);
@@ -173,26 +172,60 @@ void ListaDupla::insere_ordenado(int val)
     }
 
     NoDuplo *p = inicio;
-    while(p != nullptr || p->getInfo() < val)
+    while (p != nullptr || p->getInfo() < val)
     {
-        p= p->getProx();
+        p = p->getProx();
     }
-    if(p == nullptr)
+    if (p == nullptr)
     {
         novo->setAnt(fim);
         fim->setProx(novo);
         fim = novo;
     }
-   NoDuplo * ant = p->getAnt();
-   novo->setAnt(ant);
-   novo->setProx(p);
-   p->setAnt(novo);
+    NoDuplo *ant = p->getAnt();
+    novo->setAnt(ant);
+    novo->setProx(p);
+    p->setAnt(novo);
     ant->setProx(novo);
 }
 
+int ListaDupla::removeTodos(int val)
+{
+    
+    int cont = 0;
+    NoDuplo *p = inicio;
+    while (p != nullptr)
+    {
+        NoDuplo* prox = p->getProx();
+      if(p->getInfo() == val)
+      {
+        NoDuplo * ant = p->getAnt();
+        if(ant != nullptr)
+        {
+            ant->setProx(prox);
+        }else
+        {
+            inicio = prox;
+        }
+        if(prox != nullptr)
+        {
+            prox->setAnt(ant);
+        }else
+        {
+            fim = ant;
+        }
+        delete p;
+        n--;
+        cont++;
+      }
+      p= prox;
+    }
+    return cont;
+}   
+
 void ListaDupla::insere(int val)
 {
-    NoDuplo* novo_no = new NoDuplo(val);
+    NoDuplo *novo_no = new NoDuplo(val);
 
     // Lista vazia
     if (n == 0)
@@ -204,7 +237,7 @@ void ListaDupla::insere(int val)
     }
 
     // Procura a primeira posição cujo valor >= val
-    NoDuplo* p = inicio;
+    NoDuplo *p = inicio;
 
     while (p != nullptr && val > p->getInfo())
     {
@@ -236,7 +269,7 @@ void ListaDupla::insere(int val)
     }
 
     // Inserção no meio
-    NoDuplo* p_prev = p->getAnt();
+    NoDuplo *p_prev = p->getAnt();
 
     p_prev->setProx(novo_no);
     novo_no->setAnt(p_prev);
@@ -247,3 +280,17 @@ void ListaDupla::insere(int val)
     n++;
 }
 
+void ListaDupla::inverte()
+{
+    NoDuplo * p = inicio;
+    if(p != nullptr)
+    {
+        NoDuplo* prox = p->getProx();
+        prox->setAnt(p->getAnt());
+        p->setAnt(prox);    
+        p = prox;
+    }
+    NoDuplo *tmp = inicio;
+    inicio = fim;
+    fim = tmp;
+}
