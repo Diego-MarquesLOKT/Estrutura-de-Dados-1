@@ -35,6 +35,44 @@ void ListaCirc::insere_inicio(int val)
     n = n + 1;
 }
 
+void ListaCirc::removeIntervalo(int a, int b)
+{
+    if(n==0)
+    {
+        return;
+    }
+    if(n==1 && inicio->getInfo() >= a && inicio->getInfo() <= b  )
+    {
+        inicio = nullptr;
+        fim = nullptr;
+        n=0;
+    }
+    NoDuplo *p = inicio;
+    NoDuplo * ant = nullptr;
+    NoDuplo *prox= nullptr;
+    int cont = 0;
+    do{
+        prox= p->getProx();
+        if(p->getInfo() >= a && p->getInfo() <= b)
+        {
+            ant =p->getAnt();
+            ant->setProx(prox);
+            prox->setAnt(ant);
+            if(p==inicio)
+            {
+                inicio = prox;
+            }if(p == fim)
+            {
+                fim= ant;
+            }
+                delete p;
+                n--; 
+        }
+        p= prox;
+        cont++;
+    }while(cont < n);
+}
+
 void ListaCirc::remove_inicio()
 {
     if (n == 0)

@@ -12,6 +12,7 @@ class ListaCirc
      void insere_final(int val);
      void remove_final();
      void imprime();
+     void removeIntervalo(int a,int b);
      private:  
     NoDuplo *inicio;
      NoDuplo *fim;
