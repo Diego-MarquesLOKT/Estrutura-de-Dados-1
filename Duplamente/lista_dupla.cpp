@@ -280,6 +280,15 @@ void ListaDupla::insere(int val)
     n++;
 }
 
+void ListaDupla::removeIntervalo(int a, int b)
+{
+    NoDuplo * p = inicio;
+    if(n==0)
+    {
+        return;
+    }
+}
+
 void ListaDupla::inverte()
 {
     NoDuplo * p = inicio;

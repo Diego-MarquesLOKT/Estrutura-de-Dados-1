@@ -21,6 +21,7 @@ public:
     void insere_ordenado(int val);
     int removeTodos(int val);
     void inverte();
+    void removeIntervalo(int a, int b);
 private:
      NoDuplo *inicio;
     NoDuplo *fim;

@@ -37,40 +37,49 @@ void ListaCirc::insere_inicio(int val)
 
 void ListaCirc::removeIntervalo(int a, int b)
 {
-    if(n==0)
+    if (n == 0)
     {
         return;
     }
-    if(n==1 && inicio->getInfo() >= a && inicio->getInfo() <= b  )
-    {
-        inicio = nullptr;
-        fim = nullptr;
-        n=0;
-    }
     NoDuplo *p = inicio;
-    NoDuplo * ant = nullptr;
-    NoDuplo *prox= nullptr;
+    NoDuplo *ant = nullptr;
+    NoDuplo *prox = nullptr;
+    int qtd = n;
     int cont = 0;
-    do{
-        prox= p->getProx();
-        if(p->getInfo() >= a && p->getInfo() <= b)
+    do
+    {
+        prox = p->getProx();
+
+        if (p->getInfo() >= a && p->getInfo() <= b)
         {
-            ant =p->getAnt();
+            // Se p é o único nó restante
+            if (n == 1)
+            {
+                delete p;
+
+                inicio = nullptr;
+                fim = nullptr;
+                n = 0;
+
+                return;
+            }
+            ant = p->getAnt();
             ant->setProx(prox);
             prox->setAnt(ant);
-            if(p==inicio)
+            if (p == inicio)
             {
                 inicio = prox;
-            }if(p == fim)
-            {
-                fim= ant;
             }
-                delete p;
-                n--; 
+            if (p == fim)
+            {
+                fim = ant;
+            }
+            delete p;
+            n--;
         }
-        p= prox;
+        p = prox;
         cont++;
-    }while(cont < n);
+    } while (cont < qtd);
 }
 
 void ListaCirc::remove_inicio()
@@ -110,13 +119,14 @@ void ListaCirc::imprime()
 
 void ListaCirc::remove_final()
 {
-    if(n==0) return;
-    NoDuplo* p = fim;
+    if (n == 0)
+        return;
+    NoDuplo *p = fim;
     fim = fim->setAnt();
     inicio->setAnt(fim);
     delete p;
     n--;
-    if(n==0)
+    if (n == 0)
     {
         inicio = nullptr;
         fim = nullptr;
