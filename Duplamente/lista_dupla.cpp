@@ -155,6 +155,41 @@ void ListaDupla::insere_posicao(int pos,int valor)
     n++;
 }
 
+void ListaDupla::insere_ordenado(int val)
+{
+    NoDuplo * novo = new NoDuplo(val);
+    if(inicio == nullptr)
+    {
+        inicio = fim = novo;
+        return;
+    }
+
+    if(val <= inicio->getInfo())
+    {
+        novo->setProx(inicio);
+        inicio->setAnt(novo);
+        inicio = novo;
+        return;
+    }
+
+    NoDuplo *p = inicio;
+    while(p != nullptr || p->getInfo() < val)
+    {
+        p= p->getProx();
+    }
+    if(p == nullptr)
+    {
+        novo->setAnt(fim);
+        fim->setProx(novo);
+        fim = novo;
+    }
+   NoDuplo * ant = p->getAnt();
+   novo->setAnt(ant);
+   novo->setProx(p);
+   p->setAnt(novo);
+    ant->setProx(novo);
+}
+
 void ListaDupla::insere(int val)
 {
     NoDuplo* novo_no = new NoDuplo(val);
