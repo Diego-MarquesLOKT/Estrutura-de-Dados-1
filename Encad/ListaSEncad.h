@@ -23,6 +23,8 @@ public:
     bool igual(ListaSEncad *l);
     void remove_todos(int valor);
     void duplicaMenor();
+    void inverte();
+    void troca_extremos();
 
 private:
     No *inicio;

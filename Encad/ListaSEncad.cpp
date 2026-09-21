@@ -79,6 +79,53 @@ void ListaSEncad::remove_final()
     p->setProx(nullptr);
 }
 
+void ListaSEncad::inverte()
+{
+    No * ant = nullptr;
+    No* atual = inicio;
+    while (atual != nullptr)
+    {
+        No *prox = atual->getProx();
+        atual->setProx(ant);
+        ant = atual;
+        atual = prox;
+    }   
+    inicio = ant;
+}
+
+void ListaSEncad::troca_extremos()
+{
+    if(n==0 || n ==1)
+    {
+        return;
+    }
+
+    if(inicio->getProx()->getProx() == nullptr)
+    {
+        No* novo = inicio;
+        No * ult = inicio->getProx();
+       ult->setProx(novo);
+       novo->setProx(nullptr);
+        inicio = ult;
+        ultimo =novo ;
+        return;
+    }
+    No* p = inicio;
+    while(p->getProx()->getProx() != nullptr)
+    {
+        p = p->getProx();
+    }    
+    No* primeiro = inicio;
+    No*ult = p->getProx();
+    No* segundo= primeiro->getProx();
+
+    ult->setProx(segundo);
+    p->setProx(primeiro);
+    primeiro->setProx(nullptr);
+    inicio = ult;
+        ultimo =primeiro ;
+}
+
 void ListaSEncad::remove_posicao(int k)
 {
     if (k < 0)
@@ -185,7 +232,7 @@ void ListaSEncad::duplicaMenor()
     No *novo = new No(menor->getInfo());
     menor->setProx(novo);
     novo->setProx(p);
-    if(novo->getProx() == nullptr)
+    if (novo->getProx() == nullptr)
     {
         ultimo = novo;
     }
