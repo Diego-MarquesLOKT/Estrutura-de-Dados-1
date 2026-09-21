@@ -210,6 +210,23 @@ int Cont::busca(int val)
     return -1;
 }
 
+void Cont::removeIntervalo(int a, int b)
+{
+    if(n==0)
+    {
+        return;
+    }
+    int cont = 0;
+    for(int i = 0; i < n;i++)
+    {
+        if(vet[i] < a || vet[i]>b)
+        {
+            vet[cont++]= vet[i];
+        }
+    }
+    n = cont;
+}
+
 void Cont::concatena(const Cont &outra)
 {
     if(n == 0 && outra.n == 0)

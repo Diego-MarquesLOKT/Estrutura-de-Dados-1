@@ -25,7 +25,7 @@ public:
    void insereValores(int t, int v[]);
    void rotacionaEsquerda(int p);
    void concatena(const Cont &outra);
-
+   void removeIntervalo(int a, int b);
 private:
    int n;
    void realoca();
