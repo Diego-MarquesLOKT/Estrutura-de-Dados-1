@@ -22,6 +22,7 @@ public:
     int contaMaiores(int val);
     bool igual(ListaSEncad *l);
     void remove_todos(int valor);
+    void duplicaMenor();
 
 private:
     No *inicio;

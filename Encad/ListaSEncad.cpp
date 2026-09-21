@@ -167,6 +167,31 @@ int ListaSEncad::getComprimento()
     return n;
 }
 
+void ListaSEncad::duplicaMenor()
+{
+    if (n == 0)
+        return;
+    No *p = inicio;
+    No *menor = inicio;
+    while (p != nullptr)
+    {
+        if (p->getInfo() < menor->getInfo())
+        {
+            menor = p;
+        }
+        p = p->getProx();
+    }
+    p = menor->getProx();
+    No *novo = new No(menor->getInfo());
+    menor->setProx(novo);
+    novo->setProx(p);
+    if(novo->getProx() == nullptr)
+    {
+        ultimo = novo;
+    }
+    n++;
+}
+
 void ListaSEncad::insere_ordenado(int val)
 {
     No *novo = new No(val);
