@@ -23,3 +23,34 @@ bool PilhaEncad::vazia()
 {
     return (topo == nullptr);
 }
+
+void PilhaEncad::empilha(int val)
+{
+    No *p = new No(val);
+    p - > setProx(topo);
+    topo = p;
+}
+
+int PilhaEncad::desempilha()
+{
+    if (vazia())
+    {
+        cout << " ERRO : Pilha vazia ! " << endl;
+        exit(1);
+    }
+    No *p = topo;
+    topo = p - > getProx();
+    int val = p - > getInfo();
+    delete p;
+    return val;
+}
+
+int PilhaEncad::getTopo()
+{
+    if (vazia())
+    {
+        cout << " ERRO : Pilha vazia ! " << endl;
+        exit(1);
+    }
+    return topo - > getInfo();
+}
