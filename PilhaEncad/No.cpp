@@ -19,3 +19,4 @@ void No::setProx(No *p)
 {
     prox = p;
 }
+
